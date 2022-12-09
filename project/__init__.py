@@ -7,6 +7,12 @@ from flask_bootstrap import Bootstrap5
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
+# page d'accueil
+@app.get('/')
+def home():
+    return render_template('index.html')
+
+
 """
 if app.config['DEBUG']:
     print("Database : " + app.config['SQLALCHEMY_DATABASE_URI'])
