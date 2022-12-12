@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 environ.setdefault('SESSION_COOKIE_HTTPONLY', "true")
 
 # var env dans fichier .env
-load_dotenv(override=False)
+load_dotenv()
 SECRET_KEY = environ.get('SECRET_KEY')
 SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI')
 SQLALCHEMY_TRACK_MODIFICATIONS = environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')
