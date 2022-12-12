@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <meta name="description" content="{% block description %}{% endblock %}" >
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/logo.ico') }}">
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='image/logo.ico') }}" width="40" height="40" alt="Site logo">
+                FlaskApp
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#">A propos</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main class="container">
+        {% block content %} {% endblock %}
+    </main>
+    <footer>
+      <div class="container mt-4">
+        <div class="row">
+          <ul class="nav justify-content-center">
+            <li class="col-1 nav-item"><a href="/" aria-label="instagram"><i aria-hidden="true" class="bi bi-instagram"></i></a></li>
+            <li class="col-1 nav-item"><a href="/" aria-label="twitter"><i aria-hidden="true" class="bi bi-twitter"></i></a></li>
+            <li class="col-1 nav-item"><a href="/" aria-label="github"><i aria-hidden="true" class="bi bi-github"></i></a></li>
+            <li class="col-1 nav-item"><a href="/" aria-label="facebook"><i aria-hidden="true" class="bi bi-facebook"></i></a></li>
+          </ul>
+        </div>
+        <div class="row">
+          <ul class="nav justify-content-center">
+            <li class="col-2 nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="col-2 nav-item"><a class="nav-link" href="#">Services</a></li>
+            <li class="col-2 nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="col-2 nav-item"><a class="nav-link" href="#">Terms</a></li>
+            <li class="col-2 nav-item"><a class="nav-link" href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="row">
+          <p class="copyright">Copyright © Une vidéothèque fantastique 2022</p>
+        </div>
+      </div>
+    </footer>
+    {{ bootstrap.load_js() }}
+</body>
+</html>

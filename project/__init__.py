@@ -12,6 +12,8 @@ app.config.from_pyfile('config.py')
 def home():
     return render_template('index.html')
 
+# bootstrap 5
+bootstrap = Bootstrap5(app)
 
 """
 if app.config['DEBUG']:
@@ -20,8 +22,6 @@ if app.config['DEBUG']:
 # config sqlalchemy
 db = SQLAlchemy(app)
 
-# bootstrap 5
-bootstrap = Bootstrap5(app)
 
 # page d'accueil
 @app.get('/')

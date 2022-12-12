@@ -1,0 +1,30 @@
+:root { --primary-color: #1976D2; }
+
+.btn-primary {
+    background-color: var(--primary-color)
+ }
+
+.card-body h2{
+    font-size: 1.5em
+}
+
+.card-body h3{
+    font-size: 1.2em
+}
+
+i.bi {
+    font-size: 2em;
+    color: var(--primary-color)
+}
+
+.nav-link {
+    color : var(--primary-color)
+}
+
+.copyright {
+    margin-top:1em;
+    text-align:center;
+    font-size:1em;
+    color:rgb(54, 54, 75);
+    margin-bottom:1em;
+}
