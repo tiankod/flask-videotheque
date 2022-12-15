@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block description %} Film's details {% endblock %}
+
+{% block content %}
+<article class="col-12">
+    <div class="row">
+        <div class="card m-5">
+            <div class="card-header">
+                {% block title %} {{ film.title }} {{ film.year }}{% endblock %}
+            </div>
+            <div class="card-body">
+                <p class="card-text">Title : {{ film.title }}</p>
+                <p class="card-text">Year : {{ film.year }}</p>
+                <p class="card-text">Release Date : {{ film.release_date.strftime("%Y-%m-%d") }}</p>
+                <p class="card-text">Duration : {{ film.duration }} minutes</p>
+                <p class="card-text">Joined : {{ film.created_at }}</p>
+                <div class="card bg-gradient">
+                    <div class="card-body">
+                       <h3 class="card-title">Description</h3>
+                       <p class="card-text">{{ film.description }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <button type="button" class="btn btn-dark" onclick="history.back()">Return</button>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+{% endblock %}
