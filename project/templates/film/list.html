@@ -24,9 +24,32 @@
                 </div>
                 <div class="card-footer text-muted">
                     <a class="btn btn-dark" href="{{ url_for('film_func.display', film_id=film.id)}}">Details</a>
+                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{film.id}}">Delete</a>
                 </div>
             </div>
         </article>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal{{film.id}}" tabindex="-1" aria-labelledby="deleteModalLabel{{film.id}}" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this film {{film}} ?
+                </div>
+                <div class="modal-footer">
+                    <form method="post"
+                        action="{{ url_for('film_func.delete', film_id=film.id) }}">
+                        <button class="btn btn-dark" data-bs-dismiss="modal" type="reset">No</button>
+                        <button class="btn btn-primary" type="submit">Yes</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         {% endfor %}
     </div>
