@@ -24,6 +24,7 @@
                 </div>
                 <div class="card-footer text-muted">
                     <a class="btn btn-dark" href="{{ url_for('film_func.display', film_id=film.id)}}">Details</a>
+                    <a class="btn btn-primary" href="{{ url_for('film_func.edit', film_id=film.id) }}">Edit</a>
                     <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{film.id}}">Delete</a>
                 </div>
             </div>

@@ -7,10 +7,10 @@
 
     <form method="post">
         {{ form.csrf_token }}
-        {{ render_form_row([form.title, form.year], col_class_default='col-md-6') }}
-        {{ render_field(form.description) }}
-        {{ render_form_row([form.release_date], col_class_default='col-6') }}
-        {{ render_form_row([form.duration], col_class_default='col-1') }}
+        {{ render_form_row([form.title, form.year], col_map={'title': 'col-sm-12 col-md-9 col-lg-8 col-xl-8', 'year': 'col-sm-3 col-md-3 col-lg-4 col-xl-2'}) }}
+        {{ render_field(form.description, class='description-textarea') }}
+        {{ render_form_row([form.release_date], col_class_default='col-xs-4 col-sm-4 col-lg-2') }}
+        {{ render_form_row([form.duration], col_class_default='col-xs-6 col-sm-2 col-lg-1') }}
         {{ render_field(form.btn_submit) }}
         {{ render_field(form.btn_cancel, button_style='secondary') }}
         {{ render_field(form.btn_return, button_style='dark') }}

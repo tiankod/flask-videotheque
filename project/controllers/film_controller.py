@@ -44,3 +44,37 @@ def create() -> str | Response :
 
     title = 'Add a New Film'
     return render_template('film/form.html', title=title, form = form)
+
+@film_app.route('/<int:film_id>/form/', methods=('GET', 'POST'))
+def edit(film_id: int) -> str | Response:
+
+    form = FilmForm(film_id=film_id)
+
+    if request.method == 'POST': 
+        if form.btn_return.data:
+            return redirect(url_for('film_func.list'))
+
+        if form.btn_cancel.data:
+            film: Film = Film.query.get_or_404(film_id)
+            return redirect(url_for('film_func.edit', film_id=film.id))
+
+        if form.validate():
+            filmRecord: Film = Film.query.get_or_404(film_id)
+            filmView = Film(form.title.data, form.year.data, form.description.data, form.release_date.data, form.duration.data)
+            filmRecord.title = filmView.title
+            filmRecord.year = filmView.year
+            filmRecord.description = filmView.description
+            filmRecord.release_date = filmView.release_date
+            filmRecord.duration = filmView.duration
+            db.session.add(filmRecord)
+            db.session.commit()
+            return redirect(url_for('film_func.list'))
+
+    film: Film = Film.query.get_or_404(film_id)
+    title = f'{film.title} {film.year} \'s Details ' 
+    form.title.data = film.title
+    form.year.data = film.year
+    form.description.data = film.description
+    form.release_date.data = film.release_date
+    form.duration.data = film.duration
+    return render_template('film/form.html', title=title, form=form)

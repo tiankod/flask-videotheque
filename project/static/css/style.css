@@ -28,3 +28,6 @@ i.bi {
     color:rgb(54, 54, 75);
     margin-bottom:1em;
 }
+
+.description-textarea { 
+    height: 20em !important; }
