@@ -22,11 +22,16 @@
                 </div>
             </div>
             <div class="card-footer text-muted">
-                <button type="button" class="btn btn-dark" onclick="history.back()">Return</button>
+                <button id="returnButton" type="button" class="btn btn-dark"">Return</button>
             </div>
         </div>
     </div>
 </article>
 
+<script>
+    document.getElementById('returnButton').addEventListener('click', () => {
+        history.back();
+    });
+</script>
 
 {% endblock %}
