@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form, render_field, render_form_row %}
+
+{% block content %}
+    <h1 style="width: 100%">{% block title %} {{title}} {% endblock %}</h1>
+
+
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ render_form_row([form.title, form.year], col_class_default='col-md-6') }}
+        {{ render_field(form.description) }}
+        {{ render_form_row([form.release_date], col_class_default='col-6') }}
+        {{ render_form_row([form.duration], col_class_default='col-1') }}
+        {{ render_field(form.btn_submit) }}
+        {{ render_field(form.btn_cancel, button_style='secondary') }}
+        {{ render_field(form.btn_return, button_style='dark') }}
+    </form>
+
+{% endblock %}

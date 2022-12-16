@@ -1,7 +1,8 @@
 ''' 
     routes pour l'entité Film
 '''
-from flask import Blueprint, render_template, Response, redirect, url_for
+from flask import Blueprint, render_template, Response, redirect, url_for, request
+from project.form.film_form import FilmForm
 from project.models.film import Film
 from project import db
 
@@ -23,3 +24,23 @@ def delete(film_id: int) -> Response:
     db.session.delete(film)
     db.session.commit()
     return redirect(url_for('film_func.list'))
+
+@film_app.route('/create/', methods=('GET', 'POST'))
+def create() -> str | Response :
+    form = FilmForm()
+
+    if request.method == 'POST':
+        if form.btn_return.data:
+            return redirect(url_for('film_func.list'))
+
+        if form.btn_cancel.data:
+            return redirect(url_for('film_func.create'))
+            
+        if form.validate():
+            film = Film(form.title.data, form.year.data, form.description.data, form.release_date.data, form.duration.data)
+            db.session.add(film)
+            db.session.commit()
+            return redirect(url_for('film_func.list'))
+
+    title = 'Add a New Film'
+    return render_template('film/form.html', title=title, form = form)
